@@ -4,6 +4,9 @@ using blazor.KovalenkoMA.Data;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TodoServerApp.Data;
+using TodoServerApp.Data.Interfaces;
+
 
 namespace blazor.KovalenkoMA
 {
@@ -40,6 +43,7 @@ namespace blazor.KovalenkoMA
                 .AddDefaultTokenProviders();
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+            builder.Services.AddScoped<IDataService, MemoryDataService>();
 
             var app = builder.Build();
 

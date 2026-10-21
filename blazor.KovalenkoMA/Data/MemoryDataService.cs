@@ -1,6 +1,9 @@
-﻿namespace blazor.KovalenkoMA.Data
+﻿using blazor.KovalenkoMA.Data;
+using TodoServerApp.Data.Interfaces;
+
+namespace TodoServerApp.Data
 {
-    public class MemoryDataService
+    public class MemoryDataService : IDataService
     {
         private static IEnumerable<TaskItem> tasks = new List<TaskItem> {
             new TaskItem { Id = 1, Title="Задача 1", Description="Описание задачи 1", CreatedDate=DateTime.Now },
@@ -8,9 +11,10 @@
             new TaskItem { Id = 3, Title="Задача 3", Description="Описание задачи 3", CreatedDate=DateTime.Now },
         };
 
-        public IEnumerable<TaskItem> GetTaskItems()
+        public async Task<IEnumerable<TaskItem>> GetTaskItemsAsync()
         {
-            return tasks;
+            await Task.Delay(1000);
+            return await Task.FromResult(tasks);
         }
     }
 }

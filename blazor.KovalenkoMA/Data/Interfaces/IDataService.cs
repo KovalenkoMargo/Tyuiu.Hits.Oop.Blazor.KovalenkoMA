@@ -1,10 +1,9 @@
-﻿namespace blazor.KovalenkoMA.Data.Interfaces
+﻿using blazor.KovalenkoMA.Data;
+
+namespace TodoServerApp.Data.Interfaces
 {
-    namespace TodoServerApp.Data.Interfaces
+    public interface IDataService
     {
-        public interface IDataService
-        {
-            IEnumerable<TaskItem> GetTaskItems();
-        }
+        Task<IEnumerable<TaskItem>> GetTaskItemsAsync();
     }
 }
